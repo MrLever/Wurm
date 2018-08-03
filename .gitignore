@@ -1,0 +1,4 @@
+*.exe
+.vs/
+Toolkits/OpenGL/Libraries/*.*
+x64/
