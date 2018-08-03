@@ -23,7 +23,7 @@
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="Shader.cpp" />
-    <ClCompile Include="Toolkits\OpenGL\include\glad\glad.c" />
+    <ClCompile Include="Dependencies\OpenGL\include\glad\glad.c" />
   </ItemGroup>
   <ItemGroup>
     <None Include="fragmentShader.frag" />
@@ -87,8 +87,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>C:\Users\nicol\source\repos\OpenGL Project\Toolkits\OpenGL\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\nicol\source\repos\OpenGL Project\Toolkits\OpenGL\lib\x64;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\nicol\source\repos\OpenGL Project\Dependencies\OpenGL\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\nicol\source\repos\OpenGL Project\Dependencies\OpenGL\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
