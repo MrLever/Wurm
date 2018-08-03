@@ -87,8 +87,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>C:\Users\nicol\source\repos\OpenGL Project\Dependencies\OpenGL\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\nicol\source\repos\OpenGL Project\Dependencies\OpenGL\lib\x64;$(LibraryPath)</LibraryPath>
+    <IncludePath>%(ProjectDir)\Dependencies\OpenGL\include;$(IncludePath)</IncludePath>
+    <LibraryPath>%(ProjectDir)\Dependencies\OpenGL\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
