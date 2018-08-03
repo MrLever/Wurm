@@ -4,7 +4,7 @@
 
 #include "Shader.h"
 
-//TODO: Add exception handling
+//ctors
 Shader::Shader(std::string vertexShaderFile, std::string fragmentShaderFile) {
 	GLuint vertexShader;
 	GLuint fragmentShader;
@@ -38,8 +38,19 @@ Shader::Shader() : Shader("vertexShader.vert", "fragmentShader.frag"){
 Shader::~Shader(){
 }
 
+//Public Member Functions
 void Shader::use() {
 	glUseProgram(_program);
+	return;
+}
+
+void Shader::modifyUniform(const std::string &uniform, GLfloat x, GLfloat y, GLfloat z, GLfloat w) {
+	GLint uniformLocation = glGetUniformLocation(_program, uniform.c_str());
+	if (uniformLocation == -1) {
+		std::cout << "\n**Error** uniform not found.";
+		return;
+	}
+	glUniform4f(uniformLocation, x, y, z, w);
 	return;
 }
 
@@ -84,6 +95,3 @@ void Shader::createProgram(GLuint vertexShader, GLuint fragmentShader) {
 	return;
 }
 
-void Shader::modifyUniform(const std::string &uniform, GLfloat x, GLfloat y, GLfloat z, GLfloat w) {
-	return;
-}

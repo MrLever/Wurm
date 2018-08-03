@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <cmath>
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
@@ -8,12 +9,6 @@
 #include "Renderer.h"
 #include "Shader.h"
 #include "Input.h"
-
-/*
-	TODO:
-	Break this bitch apart.
-	Why no color
-*/
 
 void framebufferResizeCallback(GLFWwindow* window, int width, int height);
 void processInput(GLFWwindow *window);
@@ -23,15 +18,17 @@ int main(int argc, char *argv[]) {
 	Shader shader;
 	Input input;
 	GLfloat verts[] = {
-		-1.0f,  -1.0f, 0.0f,  // Bottom Left
-		 0.0f, -1.0f, 0.0f,  // bottom right
-		 0.0f,  0.0f, 0.0f,  // center
-		 0.0f,  1.0f, 0.0f,   // center right
-		 1.0f, 1.0f, 0.0f
+		-0.5f, -0.5f,  0.0f,  // Bottom Left
+		 1.0f,  0.0f,  0.0f,  // Bottom Left color
+
+		 0.0f,  0.5f,  0.0f,  // center
+		 0.0f,  1.0f,  0.0f,  // center color
+
+		 0.5f, -0.5f,  0.0f,  // bottom right
+		 0.0f,  0.0f,  1.0f   // bottom right color
 	};
 	GLuint indices[] = {
-		0, 1, 2, //1st triangle
-		2, 3, 4  //2nd triangle
+		0, 1, 2 //1st triangle
 	};
 
 	GLuint VAO;
@@ -52,8 +49,13 @@ int main(int argc, char *argv[]) {
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (void*)0);
-	glEnableVertexAttribArray(0);	
+	// Position
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (void*)0);
+	glEnableVertexAttribArray(0);
+
+	// Color
+	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (void*)(3 * sizeof(GLfloat)));
+	glEnableVertexAttribArray(1);
 
 
 	//Main loop
@@ -65,6 +67,15 @@ int main(int argc, char *argv[]) {
 		glClear(GL_COLOR_BUFFER_BIT); //State using fn
 		
 		shader.use();
+		/*GLfloat r = 0.0f, g = 0.0f, b = 0.0f, z = 1.0f, time;
+		time = (GLfloat)glfwGetTime();
+
+		r = (std::sin(time) / 2.0f) + 0.5f;
+		g = (std::sin(time + 3.14f) / 2.0f) + 0.5f;
+		b = (std::sin(time + 4.71f) / 2.0f) + 0.5f;
+		*/
+		//shader.modifyUniform("color", r, g, b, z);
+
 		glBindVertexArray(VAO);
 		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 		glBindVertexArray(0);
