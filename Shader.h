@@ -11,6 +11,7 @@ class Shader{
 		std::string readShaderSource(std::string fileName);
 		void verifyShader(GLuint shader, std::string name);
 		void createProgram(GLuint vertexShader, GLuint fragmentShader);
+		void verifyUniform(GLuint uniformLocation, const std::string &uniform);
 		
 	public:
 		//Constructors
@@ -20,6 +21,7 @@ class Shader{
 
 		//Member Functions
 		void use();
+		void modifyUniform(const std::string &uniform, GLfloat x);
 		void modifyUniform(const std::string &uniform, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
 };
 

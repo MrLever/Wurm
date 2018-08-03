@@ -43,13 +43,14 @@ void Shader::use() {
 	glUseProgram(_program);
 	return;
 }
-
+void Shader::modifyUniform(const std::string &uniform, GLfloat x) {
+	GLint uniformLocation = glGetUniformLocation(_program, uniform.c_str());
+	verifyUniform(uniformLocation, uniform);
+	glUniform1f(uniformLocation, x);
+}
 void Shader::modifyUniform(const std::string &uniform, GLfloat x, GLfloat y, GLfloat z, GLfloat w) {
 	GLint uniformLocation = glGetUniformLocation(_program, uniform.c_str());
-	if (uniformLocation == -1) {
-		std::cout << "\n**Error** uniform not found.";
-		return;
-	}
+	verifyUniform(uniformLocation, uniform);
 	glUniform4f(uniformLocation, x, y, z, w);
 	return;
 }
@@ -95,3 +96,9 @@ void Shader::createProgram(GLuint vertexShader, GLuint fragmentShader) {
 	return;
 }
 
+void Shader::verifyUniform(GLuint uniformLocation, const std::string &uniform) {
+	if (uniformLocation == -1) {
+		std::cout << "\n**Error** uniform " << uniform << " not found.";
+		return;
+	}
+}

@@ -60,13 +60,17 @@ int main(int argc, char *argv[]) {
 
 	//Main loop
 	while (!glfwWindowShouldClose(renderingSystem.window())) {
-		input.processInput(renderingSystem.window());
+		float x = 0, y = 0;
+
+		input.processInput(renderingSystem.window(), x, y);
 
 		//Rendering commands
 		glClearColor(0.2f, 0.2f, 0.2f, 1.0f); //State setting fn
 		glClear(GL_COLOR_BUFFER_BIT); //State using fn
 		
 		shader.use();
+		shader.modifyUniform("xDeltaPos", x);
+		shader.modifyUniform("yDeltaPos", y);
 		/*GLfloat r = 0.0f, g = 0.0f, b = 0.0f, z = 1.0f, time;
 		time = (GLfloat)glfwGetTime();
 

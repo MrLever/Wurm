@@ -9,6 +9,6 @@ public:
 	~Input();
 
 	//Public Member Functions
-	void processInput(GLFWwindow *window);
+	void processInput(GLFWwindow *window, float &x, float &y);
 };
 
