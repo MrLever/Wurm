@@ -1,3 +1,4 @@
 *.exe
 .vs/
 Toolkits/OpenGL/Libraries/*.*
+bin/
