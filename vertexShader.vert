@@ -11,8 +11,7 @@ uniform float yDeltaPos;
 
 out vec3 color;
 
-void main()
-{
+void main(){
     gl_Position = vec4(aPos.x + xDeltaPos, aPos.y + yDeltaPos, aPos.z, 1.0);
 	color = aColor;
 }
