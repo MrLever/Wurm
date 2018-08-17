@@ -30,6 +30,7 @@
     <None Include="vertexShader.vert" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Dependencies\stb\stb_image.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="Shader.h" />
@@ -87,13 +88,13 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(ProjectDir)\Dependencies\OpenGL\include;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\nicol\source\repos\Wurm\Dependencies\stb;$(ProjectDir)\Dependencies\OpenGL\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(ProjectDir)\Dependencies\OpenGL\lib\x64;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)\bin\$(Platform)\$(Configuration)\</OutDir>
     <IntDir>bin\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>$(ProjectDir)\Dependencies\OpenGL\include;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\nicol\source\repos\Wurm\Dependencies\stb;$(ProjectDir)\Dependencies\OpenGL\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(ProjectDir)\Dependencies\OpenGL\lib\x64;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)\bin\$(Platform)\$(Configuration)\</OutDir>
     <IntDir>bin\$(Platform)\$(Configuration)\</IntDir>

@@ -27,5 +27,6 @@ class Renderer{
 
 		//Functions
 		GLFWwindow* window();
+		GLuint fetchTexture(std::string filepath);
 };
 

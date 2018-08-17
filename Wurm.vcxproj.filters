@@ -16,6 +16,9 @@
     <Filter Include="Shaders">
       <UniqueIdentifier>{8cc0afea-b503-4df1-a17a-63ec4baad012}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Dependencies">
+      <UniqueIdentifier>{2e6f45ac-6290-4b62-aab8-144a12d909fd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Core.cpp">
@@ -31,7 +34,7 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Dependencies\OpenGL\include\glad\glad.c">
-      <Filter>Source Files</Filter>
+      <Filter>Dependencies</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -51,6 +54,9 @@
     </ClInclude>
     <ClInclude Include="Input.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Dependencies\stb\stb_image.h">
+      <Filter>Dependencies</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -43,6 +43,11 @@ void Shader::use() {
 	glUseProgram(_program);
 	return;
 }
+void Shader::modifyUniform(const std::string &uniform, GLint x) {
+	GLint uniformLocation = glGetUniformLocation(_program, uniform.c_str());
+	verifyUniform(uniformLocation, uniform);
+	glUniform1i(uniformLocation, x);
+}
 void Shader::modifyUniform(const std::string &uniform, GLfloat x) {
 	GLint uniformLocation = glGetUniformLocation(_program, uniform.c_str());
 	verifyUniform(uniformLocation, uniform);
