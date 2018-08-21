@@ -57,8 +57,13 @@ int main(int argc, char *argv[]) {
 	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(GLfloat), (void*)(6 * sizeof(GLfloat)));
 	glEnableVertexAttribArray(2);
 
+	shader.use();
 	GLuint texture = renderingSystem.fetchTexture("textures/space.png");
+	GLuint texture2 = renderingSystem.fetchTexture("textures/box.jpg");
 
+	glUniform1i(glGetUniformLocation(shader.program(), "texture1"), 0);
+	glUniform1i(glGetUniformLocation(shader.program(), "texture2"), 1);
+	
 	//Main loop
 	while (!glfwWindowShouldClose(renderingSystem.window())) {
 		float x = 0, y = 0;
@@ -69,13 +74,15 @@ int main(int argc, char *argv[]) {
 		glClearColor(0.2f, 0.2f, 0.2f, 1.0f); //State setting fn
 		glClear(GL_COLOR_BUFFER_BIT); //State using fn
 
+		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, texture);
+		glActiveTexture(GL_TEXTURE1);
+		glBindTexture(GL_TEXTURE_2D, texture2);
 		
 		shader.use();
 		//shader.modifyUniform("xDeltaPos", x);
 		//shader.modifyUniform("yDeltaPos", y);
-				
-		
+
 		glBindVertexArray(VAO);
 		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 		glBindVertexArray(0);
@@ -87,6 +94,7 @@ int main(int argc, char *argv[]) {
 	glDeleteVertexArrays(1, &VAO);
 	glDeleteBuffers(1, &VBO);
 	glDeleteBuffers(1, &EBO);
+
 
 	return 0;
 }

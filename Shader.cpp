@@ -6,25 +6,30 @@
 
 //ctors
 Shader::Shader(std::string vertexShaderFile, std::string fragmentShaderFile) {
-	GLuint vertexShader;
-	GLuint fragmentShader;
+	GLuint vertexShader, fragmentShader;
 
+	//Create shaders
 	vertexShader = glCreateShader(GL_VERTEX_SHADER);
+	fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
+	
+	//Read source for vertex shader
 	std::string vertexShaderSourceBuffer = readShaderSource(vertexShaderFile);
 	const char* vertexShaderSource = vertexShaderSourceBuffer.c_str();
 	glShaderSource(vertexShader, 1, &vertexShaderSource, nullptr);
-	glCompileShader(vertexShader);
-	verifyShader(vertexShader, "Vertex");
-
-	fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
+	
+	//Read source for fragment shader
 	std::string fragmentShaderSourceBuffer = readShaderSource(fragmentShaderFile);
 	const char* fragmentShaderSource = fragmentShaderSourceBuffer.c_str();
 	glShaderSource(fragmentShader, 1, &fragmentShaderSource, nullptr);
+	
+	//Compile Shaders
+	glCompileShader(vertexShader);
+	verifyShader(vertexShader, "Vertex");
 	glCompileShader(fragmentShader);
 	verifyShader(fragmentShader, "Fragment");
 
+	//Link and discard shaders
 	createProgram(vertexShader, fragmentShader);
-	
 	glDeleteShader(vertexShader);
 	glDeleteShader(fragmentShader);
 
@@ -42,6 +47,9 @@ Shader::~Shader(){
 void Shader::use() {
 	glUseProgram(_program);
 	return;
+}
+GLuint Shader::program() {
+	return _program;
 }
 void Shader::modifyUniform(const std::string &uniform, GLint x) {
 	GLint uniformLocation = glGetUniformLocation(_program, uniform.c_str());

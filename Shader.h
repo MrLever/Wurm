@@ -21,6 +21,7 @@ class Shader{
 
 		//Member Functions
 		void use();
+		GLuint program();
 		void modifyUniform(const std::string &uniform, GLint x);
 		void modifyUniform(const std::string &uniform, GLfloat x);
 		void modifyUniform(const std::string &uniform, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
