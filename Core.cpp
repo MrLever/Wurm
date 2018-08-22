@@ -38,7 +38,6 @@ int main(int argc, char *argv[]) {
 	
 	
 	glBindVertexArray(VAO);
-	
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(verts), verts, GL_STATIC_DRAW);
 
@@ -60,7 +59,7 @@ int main(int argc, char *argv[]) {
 	shader.use();
 	GLuint texture = renderingSystem.fetchTexture("textures/space.png");
 	GLuint texture2 = renderingSystem.fetchTexture("textures/box.jpg");
-
+	
 	glUniform1i(glGetUniformLocation(shader.program(), "texture1"), 0);
 	glUniform1i(glGetUniformLocation(shader.program(), "texture2"), 1);
 	
