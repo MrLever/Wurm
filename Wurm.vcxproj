@@ -88,7 +88,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>C:\Users\nicol\source\repos\Wurm\Dependencies\stb;$(ProjectDir)\Dependencies\OpenGL\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)\Dependencies\stb;$(ProjectDir)\Dependencies\OpenGL\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(ProjectDir)\Dependencies\OpenGL\lib\x64;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)\bin\$(Platform)\$(Configuration)\</OutDir>
     <IntDir>bin\$(Platform)\$(Configuration)\</IntDir>
