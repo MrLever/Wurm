@@ -60,8 +60,8 @@ int main(int argc, char *argv[]) {
 	GLuint texture = renderingSystem.fetchTexture("textures/space.png");
 	GLuint texture2 = renderingSystem.fetchTexture("textures/box.jpg");
 	
-	glUniform1i(glGetUniformLocation(shader.program(), "texture1"), 0);
-	glUniform1i(glGetUniformLocation(shader.program(), "texture2"), 1);
+	shader.modifyUniform("texture1", 0);
+	shader.modifyUniform("texture2", 1);
 	
 	//Main loop
 	while (!glfwWindowShouldClose(renderingSystem.window())) {
